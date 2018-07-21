@@ -1,0 +1,21 @@
+<div class="wraper">
+<agm-map [latitude]="32.090696" [longitude]="34.876625" [zoom]="10">
+    <agm-marker  *ngFor="let item of selectedUser" 
+      [latitude]="item.location.x" 
+      [longitude]="item.location.y">
+        <agm-info-window>
+          <img src="{{item.careTaker.photo}}" alt="photo" class="marker-photo">
+          <strong>{{item.firstName}}</strong>
+          <strong>{{item.lastName}}</strong>
+        </agm-info-window>
+      </agm-marker>
+
+  <agm-circle  *ngFor="let item of selectedUser"  [latitude]="item.location.x" [longitude]="item.location.y" 
+   [radius]="item.location.radius"
+   [fillColor]="'cornflowerblue'"
+   [circleDraggable]="false"
+   [editable]="false">
+  </agm-circle>
+</agm-map>
+<button *ngIf=(this.userservice.isLocationView) class="change-state" (click)="backToListView()">back to list view</button>
+</div>

@@ -1,0 +1,29 @@
+.wraper{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+agm-map {
+    height: 430px;
+  }
+
+  .marker-photo{
+      height:10rem;
+      width:10rem;
+
+  }
+
+  .change-state{
+    align-self: center;
+    font-size: 1rem;
+    height: 3rem;
+    width: 8rem;
+    background-color: var(--color-primary-light);
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }

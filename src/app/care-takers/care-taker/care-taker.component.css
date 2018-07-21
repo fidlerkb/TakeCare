@@ -1,0 +1,19 @@
+.main-details{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-grey-light-1);
+}
+
+.content{
+    width:40rem;
+    background-color: #fff;
+}
+.userimg{
+    height :20rem;
+    width:20rem ; 
+}
+
+.location{
+    width: 50rem;
+    background-color: #fff;
+}

@@ -1,0 +1,45 @@
+<div class="wrapper">
+
+  <form (ngSubmit)="onSubmit(frm)" #frm="ngForm">
+    <div class="firstname-content">
+      <label for="FirstName" class="firstname-lable">First Name</label>
+      <input type="text" id="firstname" class="firstname-input" ngModel name="firstname" required #fname="ngModel">
+      <span *ngIf="!fname.valid && fname.touched">Required Field</span>
+    </div>
+    <div class="lastname-content">
+      <label for="LastName" class="lastname-lable">Last Name</label>
+      <input type="text" id="lastname" class="lastname-input" ngModel name="lastname" required #lname="ngModel" >
+      <span *ngIf="!lname.valid && lname.touched">Required Field</span>
+    </div>
+    <div class="email-content">
+      <label for="email" class="email-lable">Enail</label>
+      <input type="email" id="email" class="email-input" [(ngModel)]="this.validMail" name="mail" required email #email="ngModel">
+      <span *ngIf="!email.valid && email.touched">please enter valid mail</span>
+      <span *ngIf="!this.cheackUniqueMail()">mail allredy in use</span>
+    </div>
+    <div class="password-content">
+      <label for="password" class="password-lable">Password</label>
+      <input [type]="type" id="password" class="password-input" ngModel name="password" required #pass="ngModel">
+      <button (click)="showpass()">show</button>
+      <span *ngIf="!pass.valid && pass.touched">Required Field</span>
+    </div>
+    <div class="phone-content">
+      <label for="phone" class="phone-lable">Phone Number</label>
+      <input type="phone" id="phone" class="phone-input" ngModel name="phone" required  #phone="ngModel">
+      <span *ngIf="!phone.valid && phone.touched">Required Field</span>
+    </div>
+    <div class="address-content">
+      <label for="address" class="search-lable">address</label>
+      <input placeholder="search for address" id="search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl" ngModel name="address" required >
+      <!-- <span *ngIf="!s.valid && s.touched">Required Field</span> -->
+      <div class="container">
+          <agm-map class="map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="false"></agm-marker>
+          </agm-map>
+        </div>
+    </div>
+    <p>{{this.validMail}}</p>
+    <button [disabled]="!frm.valid || !this.validAddress" type="submit"class="submit-btn">submit</button>
+  </form>
+
+</div>

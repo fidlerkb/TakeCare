@@ -1,0 +1,14 @@
+<div class="wraper">
+<form (ngSubmit)="onlogin(frm)" #frm="ngForm">
+    <div class="email-content">
+      <label for="email" class="email-lable">Enail</label>
+      <input type="email" id="email" class="email-input"  ngModel name="mail" required email #email="ngModel" >
+    </div>
+    <div class="password-content">
+      <label for="password" class="password-lable">Password</label>
+      <input type="password" id="password" class="password-input" ngModel name="password" required #pass="ngModel">
+    </div>
+
+    <button [disabled]="!frm.valid" type="submit" class="submit-btn">LogIn</button>
+  </form>
+</div>

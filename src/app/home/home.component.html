@@ -1,0 +1,77 @@
+<div class="homepage-main">
+  <div class="main-galery">
+    <img src="/assets/Media/babysiter1.jpg" alt="galery1" class="galery-img">
+    <img src="/assets/Media/babysiter2.jpg" alt="galery2" class="galery-img">
+    <img src="/assets/Media/babysiter3.jpg" alt="galery3" class="galery-img">
+  </div>
+
+  <div class="about">
+    <h2 class="about-text">About Us</h2>
+  </div>
+
+  <div class="home-overview">
+    <div class="overview-about">
+      <div class="overview-about-title" >
+          <p class="text">
+            We are offering quick and easy careTaking services, fined the best personal for you,you can go by location by recommendation or just one whos avalable at any given time
+            in few steps u can register yourself as care taker, giving your location dates and time u are avalble, as simple as that
+            try it buy regestaring to our personal pool.
+          </p>
+      </div>
+      
+        <ul class="overview-about-features">
+          <li class="list-features">
+              Quick Hiring
+          </li>
+          <li class="list-features">
+              Easy coneect with the caretaker
+          </li>
+          <li class="list-features">
+              find avalable personal at any given time
+          </li>
+          <li class="list-features">
+              see all personal by location
+          </li>
+          <li class="list-features">
+             order caretaker in few steps
+          </li>
+          <li class="list-features">
+              become caretaker yourself
+          </li>
+        </ul>
+    
+        <div class="overview-about-login">
+          <p class="about-login-title">To enjoy all thouse features login now!</p>
+          <button class="about-login-btn" (click)="loginToSite()">LogIn</button>
+        </div>
+      </div>
+
+    <div class="top-caretaker">
+      <p class="top-caretaker-title">
+        Top CareTakers
+      </p>
+        <div class="top-babysiter">
+            <slideshow 
+              [autoPlay]="true"
+              [showArrows]="false"
+              [imageUrls]="imgUrls"
+              [showCaptions]="true"
+             
+              [autoPlayWaitForLazyLoad]="true">
+            </slideshow>
+        </div>
+        <p class="usefull-content-title">From The Web</p>
+        <div class="content1">
+            
+        </div>
+        <div class="content2">
+            <p></p>
+        </div>
+    </div> 
+</div>
+
+  <div class="caretaker">
+    <P class="caretaker-title">Become Care Taker</P>
+    <button class="caretaker-btn" (click)="registerToSite()">Register</button>
+  </div>
+</div>

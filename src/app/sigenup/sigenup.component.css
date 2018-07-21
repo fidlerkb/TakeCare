@@ -1,0 +1,11 @@
+.wrapper{
+    display: flex;
+}
+.map{
+    height:300px;
+    width: 300px;
+}
+
+input.ng-invalid.ng-touched{
+    border :1px solid red;
+}

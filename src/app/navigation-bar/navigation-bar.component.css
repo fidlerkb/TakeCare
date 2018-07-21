@@ -1,0 +1,18 @@
+.nav-home{
+    display: flex;
+    flex-direction: column;
+    min-height: 50rem;
+}
+
+.nav-btn{
+    height: 5rem;
+    background-color: transparent;
+    border: none;
+    color:var(--color-grey-light-1);
+    outline: none;
+    text-transform: uppercase;
+}
+.nav-btn:hover{
+    background-color:var(--color-primary-light);
+    
+}

@@ -1,0 +1,10 @@
+  <nav class="nav-home">
+    <button class="nav-btn" routerLink="/">
+        <svg-icon class="search_icon" src="assets/Media/home.svg" [stretch]="true" 
+        [svgStyle]="{ 'width.px':15 , 'hight.px':10 ,'fill':'rgb(255,255,255)','margin-rop.px':4 }"></svg-icon>
+        Home
+    </button>
+    <button class="nav-btn" [routerLink]="['/caretakers']" routerLinkActive="active" (click)="selectProffesion(1)">Baby Sitter</button>
+    <button class="nav-btn" [routerLink]="['/caretakers']" routerLincActive="active" (click)="selectProffesion(2)">Nanny</button>
+    <button class="nav-btn" [routerLink]="['/caretakers']" routerLincActive="active" (click)="selectProffesion(3)">Dog Sitter</button>
+  </nav>

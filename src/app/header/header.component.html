@@ -1,0 +1,21 @@
+<div class="main-header">
+  <div class="logo-frame">
+    <img class="header-logo" src="assets/Media/images1.jpg" alt="Logo">
+  </div>
+  <form action="#" class="search">
+    <input type="text" class="search_input" placeholder="Search">
+    <button class="search_button">
+        <svg-icon class="search_icon" src="assets/Media/magnifying-glass.svg"></svg-icon>
+    </button>
+   </form>
+<ng-template [ngIf]="!AuthService.isAuthenticated()"> 
+    <div class="login-main">
+        <button class="sigenup-btn" routerLink="/sigenup">Sign Up
+          <svg-icon class="sigenup-icon"src="assets/Media/user-plus.svg"></svg-icon>
+        </button>
+        <button class="login-btn" routerLink="/login">Log In
+          <svg-icon class="login-icon"src="assets/Media/user-check.svg"></svg-icon>
+        </button>
+    </div>
+</ng-template>
+</div>
