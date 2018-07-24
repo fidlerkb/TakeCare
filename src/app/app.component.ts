@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { UsersService } from './Common/users.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,13 @@ import * as firebase from 'firebase';
 export class AppComponent implements OnInit {
   title = 'app';
 
+  constructor(private userservice:UsersService){
+
+  }
 
   ngOnInit(){
+    //this.userservice.getDataFromServer();
+
     firebase.initializeApp(
       {
         apiKey: "AIzaSyBkucdrFkMPSFGrnaHo_VbZ0YwUdAekx5A",

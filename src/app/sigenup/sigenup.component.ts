@@ -122,8 +122,11 @@ export class SigenupComponent implements OnInit {
       careTaker:null
     }
     this.userservice.addNewUser(user);
-    this.authservise.signupUser(user.email,user.password);
-    this.router.navigate(['login',user.id]);
+    this.authservise.signupUser(user.email,user.password)
+    .then(
+      (Response)=>{
+        this.userservice.addUserToDB(user,Response);
+        this.router.navigate([''])})
   }
   else
     return;

@@ -21,47 +21,28 @@ export class LoginComponent implements OnInit {
      private authservise:AuthService,
     private server:ServerService) { }
 
-  Users:Observable<User[]>= this.server.getDataFromDBAsync();
+
 
   selectedUser:User = null;
-  userName:string = "";
-  passWord:string = "";
+
   @ViewChild("frm") signupForm :NgForm;
 
   ngOnInit() {
-    this.getSignUpedSelectdUser();
-    this.userservice.getDataFromServer();
+
   }
 
   getSignUpedSelectdUser(){
-    debugger;
-    let userId:string = this.route.snapshot.params['id'];
-    let LSuser =  this.userservice.getDataFromLS()
-    if(userId != null){
-      this.selectedUser = this.userservice.finedUserById(userId);
-      this.userservice.addUserToDB(this.selectedUser[0]);
-    }
-    else if(LSuser != null){
-      this.selectedUser = LSuser;
-      this.userservice.addUserToDB(this.selectedUser[0]);
-    }
-    console.log(this.selectedUser);
+
   }
+  onlogin(form:NgForm){ 
+    let mail = form.value.mail;
+    let password = form.value.password;
 
-
-    onlogin(form:NgForm){ 
-      debugger;
-      let mail = form.value.mail;
-      let password = form.value.password;
-      this.authservise.loginUser(mail,password);
-      if(this.selectedUser == null){
-        this.selectedUser = this.userservice.finedUserByMail(mail);
-        console.log(this.selectedUser);
-        this.userservice.logedInUser.next(this.selectedUser[0]);
-      }
-      this.router.navigate(['']);
-      }
-  
+    this.authservise.loginUser(mail,password)
+      .then((res) => {
+        this.router.navigate(['']);
+    });
+  }
   }
 
   

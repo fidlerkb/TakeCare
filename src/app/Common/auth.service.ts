@@ -7,63 +7,50 @@ import { promise } from '../../../node_modules/protractor';
 @Injectable()
 export class AuthService {
 
-  token :string;
+
   
   constructor() { }
 
-  signupUser(email:string,password:string){
-    firebase.auth().createUserWithEmailAndPassword(email,password).
+  signupUser(email:string,password:string):Promise<any>{
+    return firebase.auth().createUserWithEmailAndPassword(email,password).
     then(
-      (Response)=>{Response.user.getIdToken()
-        .then(
-          (Response)=>{this.token = Response,
-            console.log(this.token);
-          }
-        );
-      }
+      (Response)=> this.getUsersCadintials(Response)  
     )
     .catch(error=>console.log(error));
   }
 
   loginUser(email:string,password:string){
-    firebase.auth().signInWithEmailAndPassword(email,password).
+    return firebase.auth().signInWithEmailAndPassword(email,password).
     then(
-      Response=>{ firebase.auth().currentUser.getIdToken()
-        .then(
-         (tk:string)=>{this.token=tk
-        });
-      }
-    ).
-      catch(error=>alert("user is not signed up"));
+      (Response)=> this.getUsersCadintials(Response)  
+    )
+    .catch(error=>console.log(error));
   }
 
   getToken(){
-     firebase.auth().currentUser.getIdToken()
-    .then(
-      (tk:string)=>(this.token=tk,
-      console.log(tk)
-
-    ));
-    return this.token;
+    return JSON.parse(localStorage.getItem('logdinUser')) || [];
   };
 
-  isAuthenticated(){
-    return this.token != null;
-  }
+  // isAuthenticated(){
+  //   return this.token != null;
+  // }
 
   logOut(){
-    firebase.auth()
+    firebase.auth().signOut()
+    .then(()=>
+      {localStorage.removeItem('logdinUser')}
+    )
   }
 
-getUsersCadintials(){
-   console.log(firebase.auth().currentUser.getIdToken);
+private getUsersCadintials(response){
+  return response.user.getIdToken()
+    .then(
+      (Response)=>{
+        localStorage.setItem('logdinUser', JSON.stringify(Response))
+        return Response;
+      }
+    );
 }
-
-  // setUserToLS(data:any) {
-  //   localStorage.setItem('logdinUser', JSON.stringify(data))
-  // }
 }
-
-  
 
 

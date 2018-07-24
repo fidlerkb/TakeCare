@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, CareTaker, eRoll } from '../Models/Entitys.model';
+import { User, eRoll } from '../Models/Entitys.model';
 import { Subject } from '../../../node_modules/rxjs/Subject';
 import { BehaviorSubject } from '../../../node_modules/rxjs';
 import { ServerService } from './server.service';
@@ -98,14 +98,14 @@ export class UsersService {
   logedInUser = new BehaviorSubject<User>(null);
 
 
-  initDataToServer(){
-    this.Users.forEach(element => {
-      this.serverservice.postDataToServer(element).subscribe(
-        (Response)=>console.log(Response),
-        (error)=>console.log(error)
-      );
-    });
-  }
+  // initDataToServer(){
+  //   this.Users.forEach(element => {
+  //     this.serverservice.postDataToServer(element).subscribe(
+  //       (Response)=>console.log(Response),
+  //       (error)=>console.log(error)
+  //     );
+  //   });
+  // }
 
   getDataFromServer(){
     this.serverservice.getDataFromServer().subscribe(
@@ -117,14 +117,14 @@ export class UsersService {
     );
   }
 
-  getDataFromServerAsync(){
-    this.serverservice.getDataFromDBAsync().subscribe(
-      (users:any[])=>{return users}
-    )
-  }
+  // getDataFromServerAsync(){
+  //   this.serverservice.getDataFromDBAsync().subscribe(
+  //     (users:any[])=>{return users}
+  //   )
+  // }
 
-  addUserToDB(user:User){
-    this.serverservice.postDataToServer(user).subscribe(
+  addUserToDB(user:User,token:string){
+    this.serverservice.postDataToServer(user,token).subscribe(
       (Response)=>console.log(Response),
       (error)=>console.log(error)
     );
@@ -133,7 +133,7 @@ export class UsersService {
   addNewUser(user:User){
     if(user!=null){
       this.addDataToLS(user);
-      this.Users.push(user);
+
     }
   }
 
@@ -168,7 +168,7 @@ export class UsersService {
   }
 
   addDataToLS(data:any){
-    localStorage.setItem('logdinUser', JSON.stringify(data))
+    localStorage.setItem('newuser', JSON.stringify(data))
   }
   getDataFromLS() {
     return JSON.parse(localStorage.getItem('logdinUser')) || [];
