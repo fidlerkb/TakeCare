@@ -22,9 +22,10 @@ export class AuthService {
   loginUser(email:string,password:string){
     return firebase.auth().signInWithEmailAndPassword(email,password).
     then(
-      (Response)=> this.getUsersCadintials(Response)  
+      (Response)=>{return this.getUsersCadintials(Response) }
     )
-    .catch(error=>console.log(error));
+    .catch(error=>{
+      console.log(error)});
   }
 
   getToken(){

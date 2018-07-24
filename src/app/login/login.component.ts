@@ -4,10 +4,9 @@ import { UsersService } from '../Common/users.service';
 import { User } from '../Models/Entitys.model';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../Common/auth.service';
-import { Route } from '../../../node_modules/@angular/compiler/src/core';
-import { parse } from 'path';
 import { ServerService } from '../Common/server.service';
-import { Observable } from '../../../node_modules/rxjs';
+
+
 
 @Component({
   selector: 'app-login',
@@ -40,9 +39,11 @@ export class LoginComponent implements OnInit {
 
     this.authservise.loginUser(mail,password)
       .then((res) => {
-        this.router.navigate(['']);
-    });
-  }
+        if(res){
+          this.router.navigate([''])
+        }
+      });
+    } 
   }
 
   
