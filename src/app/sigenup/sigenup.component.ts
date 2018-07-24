@@ -99,9 +99,9 @@ export class SigenupComponent implements OnInit {
   } 
 
   cheackUniqueMail(){
-    let users:User[];
+    let users:User;
     users = this.userservice.finedUserByMail(this.validMail);
-    if(users.length>0)
+    if(users !=null)
       return false;
     else    
       return true;
@@ -121,11 +121,9 @@ export class SigenupComponent implements OnInit {
       location : {x:this.latitude,y:this.longitude ,radius:0,draggable:false,lable:''},
       careTaker:null
     }
-    debugger;
-    this.authservise.signupUser(user.email,user.password);
     this.userservice.addNewUser(user);
-    // this.userservice.addUserToDB(user);
-    this.router.navigate(['']);
+    this.authservise.signupUser(user.email,user.password);
+    this.router.navigate(['login',user.id]);
   }
   else
     return;

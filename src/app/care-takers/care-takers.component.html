@@ -3,7 +3,7 @@
     <button (click)="locationView()" class="viewchange-btn">view by locations</button>
   </div>
   <div class="content">
-    <div class="users" *ngFor="let item of users" (click)="selectCareTakerToWatch(item)">
+    <div class="users"  (click)="selectCareTakerToWatch(item)" *ngFor="let item of users">
         <img src="{{item.careTaker.photo}}" alt="img" class="userimg">
         <p>Name: {{item.firstName}} {{item.lastName}}</p>
     </div>

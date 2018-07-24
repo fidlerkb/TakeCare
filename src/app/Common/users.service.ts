@@ -13,7 +13,8 @@ export class UsersService {
 
   constructor(private serverservice:ServerService,private authservice : AuthService) {
     //this.initDataToServer();
-    //this.getDataFromServer();
+    // this.getDataFromServer();
+    
    }
 
   Users : User[] = [
@@ -24,7 +25,7 @@ export class UsersService {
       password:"1234",
       email:"fidlerkb@gmail.com",
       phone:"0526499224",
-      address:"orlov 2 petah tiqwa",
+      address:"Ze'ev Orlov St 10, Petah Tikva, Israel",
       location:{x:32.090696,y:34.876625,radius:5000,draggable:false,lable:null},
       careTaker: {photo:"assets/Media/men1.jpg",ratingMark:4.5,ratingCount:2,age:32,reviewes:null,available:false,about:"great worker",roll:eRoll.babysitter,
       requestedSallery:{paymentFrequancy:'hourly',amount:35,currency:'nis'}}
@@ -34,7 +35,7 @@ export class UsersService {
     firstName:"or",
     lastName:"gilor",
     password:"1111",
-    address:"orlov 2 petah tiqwa",
+    address:"Ze'ev Orlov St 20, Petah Tikva, Israel",
     email:"gimel@gmail.com",
     phone:"05496585987",
     location:{x:32.090196,y:34.896604,radius:5000,draggable:false,lable:null},
@@ -46,7 +47,7 @@ export class UsersService {
     firstName:"shiran",
     lastName:"kaby",
     password:"2222",
-    address:"orlov 2 petah tiqwa",
+    address:"Ze'ev Orlov St 30, Petah Tikva, Israel",
     email:"shirankaby@gmail.com",
     phone:"0549374002",
     location:{x:32.190696,y:34.976604,radius:5000,draggable:false,lable:null},
@@ -58,7 +59,7 @@ export class UsersService {
     firstName:"limor",
     lastName:"gilor",
     password:"1111",
-    address:"orlov 2 petah tiqwa",
+    address:"Ze'ev Orlov St 40, Petah Tikva, Israel",
     email:"limi86@gmail.com",
     phone:"0549374001",
     location:{x:32.817971,y:34.970947,radius:5000,draggable:false,lable:null},
@@ -69,7 +70,7 @@ export class UsersService {
     id:Guid.create().toString(),
     firstName:"oz",
     lastName:"fidler",
-    address:"orlov 2 petah tiqwa",
+    address:"Ze'ev Orlov St 15, Petah Tikva, Israel",
     password:"1234",
     email:"ozib@gmail.com",
     phone:"0526499224",
@@ -82,7 +83,7 @@ export class UsersService {
     firstName:"tempo",
     lastName:"tempo",
     password:"1111",
-    address:"orlov 2 petah tiqwa",
+    address:"Ze'ev Orlov St 5, Petah Tikva, Israel",
     email:"tempo6@gmail.com",
     phone:"0549374001",
     location:{x:32.090696,y:34.876604,radius:5000,draggable:false,lable:null},
@@ -107,12 +108,19 @@ export class UsersService {
   }
 
   getDataFromServer(){
-    this,this.serverservice.getDataFromServer().subscribe(
+    this.serverservice.getDataFromServer().subscribe(
       (users:any[])=>{
-        this.Users = users
+        this.Users = users,
+        console.log(users)
       },
       (error)=>console.log(error)
     );
+  }
+
+  getDataFromServerAsync(){
+    this.serverservice.getDataFromDBAsync().subscribe(
+      (users:any[])=>{return users}
+    )
   }
 
   addUserToDB(user:User){
@@ -124,8 +132,8 @@ export class UsersService {
 
   addNewUser(user:User){
     if(user!=null){
+      this.addDataToLS(user);
       this.Users.push(user);
-      console.log(user);
     }
   }
 
@@ -134,12 +142,12 @@ export class UsersService {
   }
 
   finedUserById(id:string){
-    let user:User[];
-    return user= this.Users.filter((user:User)=>user.id==id);
+    let user:User;
+    return user= this.Users.find((user)=>user.id==id);
   }
   finedUserByMail(mail:string){
-    let user:User[];
-    return user= this.Users.filter((user:User)=>user.email==mail);
+    let user:User;
+    return user= this.Users.find((user)=>user.email===mail);
   }
 
   returnAllUsers(){
@@ -157,6 +165,13 @@ export class UsersService {
       }
     }});
     return id;   
+  }
+
+  addDataToLS(data:any){
+    localStorage.setItem('logdinUser', JSON.stringify(data))
+  }
+  getDataFromLS() {
+    return JSON.parse(localStorage.getItem('logdinUser')) || [];
   }
 
 

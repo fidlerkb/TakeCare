@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { Token } from '../../../node_modules/@angular/compiler';
 import { Observable } from '../../../node_modules/rxjs';
+import { promise } from '../../../node_modules/protractor';
 
 @Injectable()
 export class AuthService {
@@ -11,8 +12,15 @@ export class AuthService {
   constructor() { }
 
   signupUser(email:string,password:string){
-    firebase.auth().createUserWithEmailAndPassword(email,password).then(
-      //login the same user!!!!
+    firebase.auth().createUserWithEmailAndPassword(email,password).
+    then(
+      (Response)=>{Response.user.getIdToken()
+        .then(
+          (Response)=>{this.token = Response,
+            console.log(this.token);
+          }
+        );
+      }
     )
     .catch(error=>console.log(error));
   }
@@ -26,15 +34,16 @@ export class AuthService {
         });
       }
     ).
-      catch(error=>console.log(error));
+      catch(error=>alert("user is not signed up"));
   }
 
   getToken(){
      firebase.auth().currentUser.getIdToken()
     .then(
       (tk:string)=>(this.token=tk,
-      console.log(tk))
-    );
+      console.log(tk)
+
+    ));
     return this.token;
   };
 
@@ -43,13 +52,16 @@ export class AuthService {
   }
 
   logOut(){
-    firebase.auth().signOut
+    firebase.auth()
   }
+
+getUsersCadintials(){
+   console.log(firebase.auth().currentUser.getIdToken);
+}
+
   // setUserToLS(data:any) {
   //   localStorage.setItem('logdinUser', JSON.stringify(data))
   // }
-
-
 }
 
   

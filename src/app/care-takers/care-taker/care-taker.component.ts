@@ -11,7 +11,7 @@ import { Subscriber, Subscription } from '../../../../node_modules/rxjs';
 })
 export class CareTakerComponent implements OnInit , OnDestroy {
 
-  selectedUser:User[];
+  selectedUser:User;
   observedUser:User;
   paramsSubscription: Subscription;
 

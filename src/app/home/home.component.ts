@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.topUser.push(this.getTopBabysitter());
     this.topUser.push(this.getTopNanny());
     this.topUser.push(this.getTopDogSitter());

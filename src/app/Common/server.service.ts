@@ -12,18 +12,17 @@ export class ServerService {
   
   postDataToServer(data :any){
     const token = this.authservice.getToken();
-    console.log(data);
-    return this.http.post('https://takecare-2fa62.firebaseio.com/data.json?auth='+token,data);
+    return this.http.post('https://takecare-2fa62.firebaseio.com/data.json',data);
   }
 
   putDataToServer(data :any){
     const token = this.authservice.getToken();
-    return this.http.put('https://takecare-2fa62.firebaseio.com/data.jsonauth='+token,data);
+    return this.http.put('https://takecare-2fa62.firebaseio.com/data.json',data);
   }
 
   getDataFromServer(){
     const token = this.authservice.getToken();
-    return this.http.get('https://takecare-2fa62.firebaseio.com/data.json?auth='+token)
+    return this.http.get('https://takecare-2fa62.firebaseio.com/data.json')
     .map(
       (responce : Response) => {
         const data = responce.json();
@@ -34,7 +33,7 @@ export class ServerService {
 
   getDataFromDBAsync(){
     const token = this.authservice.getToken();
-    return this.http.get('https://takecare-2fa62.firebaseio.com/data.json?auth='+token)
+    return this.http.get('https://takecare-2fa62.firebaseio.com/data.json')
     .map(
       (responce:Response)=>{
         return responce.json()
