@@ -99,16 +99,16 @@ export class SigenupComponent implements OnInit {
   } 
 
   cheackUniqueMail(){
-    let users:User;
-    users = this.userservice.finedUserByMail(this.validMail);
-    if(users !=null)
-      return false;
-    else    
-      return true;
+    // let users:User;
+    // users = this.userservice.finedUserByMail(this.validMail);
+    // if(users !=null)
+    //   return false;
+    // else    
+    //   return true;
   }
 
   onSubmit(){
-    if(this.cheackUniqueMail()){
+    // if(this.cheackUniqueMail()){
     let user:User
     user = {
       id : Guid.create().toString(),
@@ -131,4 +131,4 @@ export class SigenupComponent implements OnInit {
   else
     return;
   }
-}
+// }

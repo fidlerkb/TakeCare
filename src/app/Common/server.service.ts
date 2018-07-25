@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/Http';
 import 'rxjs/Rx';
 import { map } from '../../../node_modules/rxjs/operator/map';
 import { AuthService } from './auth.service';
+import { User } from '../../../node_modules/firebase';
 
 @Injectable()
 export class ServerService {
@@ -10,14 +11,13 @@ export class ServerService {
   constructor(private http:Http,private authservice:AuthService) { }
 
   
-  postDataToServer(data :any,token:string){
+  postDataToServer(data:User,token:string){
     // const token = this.authservice.getToken();
     return this.http.post('https://takecare-2fa62.firebaseio.com/data.json?auth='+token,data);
   }
 
-  putDataToServer(data :any){
-    const token = this.authservice.getToken();
-    return this.http.put('https://takecare-2fa62.firebaseio.com/data.json',data);
+  putDataToServer(data:any[],token:string){
+    return this.http.put('https://takecare-2fa62.firebaseio.com/data.json?auth='+token,data);
   }
 
   getDataFromServer(){

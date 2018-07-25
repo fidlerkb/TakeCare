@@ -15,7 +15,7 @@
       <label for="email" class="email-lable">Enail</label>
       <input type="email" id="email" class="email-input" [(ngModel)]="this.validMail" name="mail" required email #email="ngModel">
       <span *ngIf="!email.valid && email.touched">please enter valid mail</span>
-      <span *ngIf="!this.cheackUniqueMail()">mail allredy in use</span>
+      <!-- <span *ngIf="!this.cheackUniqueMail()">mail allredy in use</span> -->
     </div>
     <div class="password-content">
       <label for="password" class="password-lable">Password</label>

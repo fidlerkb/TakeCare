@@ -32,10 +32,6 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('logdinUser')) || [];
   };
 
-  // isAuthenticated(){
-  //   return this.token != null;
-  // }
-
   logOut(){
     firebase.auth().signOut()
     .then(()=>
@@ -46,7 +42,7 @@ export class AuthService {
 private getUsersCadintials(response){
   return response.user.getIdToken()
     .then(
-      (Response)=>{
+      (Response)=>{debugger;
         localStorage.setItem('logdinUser', JSON.stringify(Response))
         return Response;
       }

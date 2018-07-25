@@ -13,7 +13,8 @@ export class UsersService {
 
   constructor(private serverservice:ServerService,private authservice : AuthService) {
     //this.initDataToServer();
-    // this.getDataFromServer();
+    this.getDataFromServer();
+    console.log(this.Users);
     
    }
 
@@ -98,14 +99,13 @@ export class UsersService {
   logedInUser = new BehaviorSubject<User>(null);
 
 
-  // initDataToServer(){
-  //   this.Users.forEach(element => {
-  //     this.serverservice.postDataToServer(element).subscribe(
-  //       (Response)=>console.log(Response),
-  //       (error)=>console.log(error)
-  //     );
-  //   });
-  // }
+  initDataToServer(){
+      let token = this.getDataFromLS();
+      this.serverservice.putDataToServer(this.Users,token).subscribe(
+        (Response)=>console.log(Response),
+        (error)=>console.log(error)
+      );
+  }
 
   getDataFromServer(){
     this.serverservice.getDataFromServer().subscribe(
@@ -117,14 +117,10 @@ export class UsersService {
     );
   }
 
-  // getDataFromServerAsync(){
-  //   this.serverservice.getDataFromDBAsync().subscribe(
-  //     (users:any[])=>{return users}
-  //   )
-  // }
-
   addUserToDB(user:User,token:string){
-    this.serverservice.postDataToServer(user,token).subscribe(
+    this.getDataFromServer();
+    this.Users.push(user);
+    this.serverservice.putDataToServer(this.Users,token).subscribe(
       (Response)=>console.log(Response),
       (error)=>console.log(error)
     );
