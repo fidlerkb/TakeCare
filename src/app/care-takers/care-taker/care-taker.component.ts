@@ -25,7 +25,6 @@ export class CareTakerComponent implements OnInit , OnDestroy {
       );
     }
 
-
     onSelection(){
       let userId = this.route.snapshot.params['id'];
       this.selectedUser = this.userservice.finedUserById(userId);
@@ -34,8 +33,12 @@ export class CareTakerComponent implements OnInit , OnDestroy {
       );
     }
 
+    test(){
+      this.observedUser.careTaker.reviewes
+    }
+
     ngOnDestroy(){
-      this.paramsSubscription.unsubscribe();
+      // this.paramsSubscription.unsubscribe();
     }
       
   }

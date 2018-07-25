@@ -76,6 +76,43 @@
 }
 
 
+.login-logedin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-btn{
+    height: 7.1rem;
+    width: 6rem;
+    border:none;
+    background-color: #fff;
+    outline: none;
+    color: var(--color-grey-dark-3);
+}
+.hello-user{
+    margin-right: 2rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: var(--color-grey-dark-3);
+    background-color: #fff;
+}
+.edit-user-btn{
+    height: 7.1rem;
+    width: 6rem;
+    border:none;
+    background-color: #fff;
+    outline: none;
+    color: var(--color-grey-dark-3);
+}
+
+.edit-user-btn:hover{
+    background-color: var(--color-primary-light);
+    color: #fff;
+}
+.logout-btn:hover{
+    background-color: var(--color-primary-light);
+    color: #fff;
+}
 
 
 

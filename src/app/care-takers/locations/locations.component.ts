@@ -19,7 +19,6 @@ export class LocationsComponent implements OnInit , OnDestroy{
   usersSubscription :Subscription;
 
   constructor(public userservice:UsersService,private router: Router) { 
-    
   }
 
   ngOnInit() {
@@ -33,8 +32,8 @@ export class LocationsComponent implements OnInit , OnDestroy{
       );
     if(!this.userservice.isLocationView)
     this.usersSubscription =this.userservice.selectedUser.subscribe(
-      (user)=> 
-      this.selectedUser.push(user)
+      (user)=> {debugger;
+      this.selectedUser.push(user)}
     );
   } 
   backToListView(){
@@ -42,7 +41,7 @@ export class LocationsComponent implements OnInit , OnDestroy{
   }
 
   ngOnDestroy(){
-    this.usersSubscription.unsubscribe();
+    // this.usersSubscription.unsubscribe();
   }
 
   }

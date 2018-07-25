@@ -36,10 +36,12 @@ export class LoginComponent implements OnInit {
   onlogin(form:NgForm){ 
     let mail = form.value.mail;
     let password = form.value.password;
-
+    this.selectedUser = this.userservice.finedUserByMail(mail);
     this.authservise.loginUser(mail,password)
       .then((res) => {
         if(res){
+          this.userservice.addLogedInUserToLS(this.selectedUser);
+          this.userservice.addlogdintokenToLS(res);
           this.router.navigate([''])
         }
       });

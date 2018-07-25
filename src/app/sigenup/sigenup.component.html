@@ -31,7 +31,7 @@
     <div class="address-content">
       <label for="address" class="search-lable">address</label>
       <input placeholder="search for address" id="search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl" ngModel name="address" required >
-      <!-- <span *ngIf="!s.valid && s.touched">Required Field</span> -->
+      <span *ngIf="!s.valid && s.touched">Required Field</span>
       <div class="container">
           <agm-map class="map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
             <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="false"></agm-marker>

@@ -1,19 +1,46 @@
 .main-details{
     display: flex;
+    min-height: 50rem;
     justify-content: space-between;
     background-color: var(--color-grey-light-1);
 }
 
 .content{
-    width:40rem;
+    width:45%;
     background-color: #fff;
 }
-.userimg{
-    height :20rem;
-    width:20rem ; 
+.fullname-wraper{
+    display: flex;
+    justify-content:space-around;
 }
+.fullname{
+    font-size: 3rem;
+    font-weight: 300;
+}
+.user-img{
+    display: flex;
+    justify-content:space-around;
+    height: 30rem;
+}
+.img{
+    height:80%;
+    width:70%; 
+}
+.moredetails{
+    font: 400 13.3333px Arial;
+    margin-left: 4rem;
+}
+.reviews-wraper{
 
-.location{
-    width: 50rem;
+}
+.reviews{
+
+}
+.location-wraper{
+    width: 45%;
+    margin-right: 3rem;
     background-color: #fff;
+}
+.location{
+
 }

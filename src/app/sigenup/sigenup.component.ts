@@ -107,7 +107,7 @@ export class SigenupComponent implements OnInit {
     //   return true;
   }
 
-  onSubmit(){
+  onSubmit(frm:NgForm){
     // if(this.cheackUniqueMail()){
     let user:User
     user = {

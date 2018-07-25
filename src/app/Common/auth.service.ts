@@ -6,8 +6,6 @@ import { promise } from '../../../node_modules/protractor';
 
 @Injectable()
 export class AuthService {
-
-
   
   constructor() { }
 
@@ -29,13 +27,15 @@ export class AuthService {
   }
 
   getToken(){
-    return JSON.parse(localStorage.getItem('logdinUser')) || [];
+    return JSON.parse(localStorage.getItem('logdintoken')) || [];
   };
 
   logOut(){
     firebase.auth().signOut()
     .then(()=>
-      {localStorage.removeItem('logdinUser')}
+      {localStorage.removeItem('logdintoken'),
+      localStorage.removeItem('logdinUser')
+    }
     )
   }
 
@@ -43,11 +43,12 @@ private getUsersCadintials(response){
   return response.user.getIdToken()
     .then(
       (Response)=>{debugger;
-        localStorage.setItem('logdinUser', JSON.stringify(Response))
+        localStorage.setItem('logdintoken', JSON.stringify(Response))
         return Response;
       }
     );
 }
+
 }
 
 

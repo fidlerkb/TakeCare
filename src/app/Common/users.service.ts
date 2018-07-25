@@ -12,11 +12,9 @@ import { AuthService } from './auth.service';
 export class UsersService {
 
   constructor(private serverservice:ServerService,private authservice : AuthService) {
-    //this.initDataToServer();
-    this.getDataFromServer();
-    console.log(this.Users);
-    
-   }
+      //this.initDataToServer();
+      this.getDataFromServer();
+    }
 
   Users : User[] = [
     {
@@ -99,13 +97,13 @@ export class UsersService {
   logedInUser = new BehaviorSubject<User>(null);
 
 
-  initDataToServer(){
-      let token = this.getDataFromLS();
-      this.serverservice.putDataToServer(this.Users,token).subscribe(
-        (Response)=>console.log(Response),
-        (error)=>console.log(error)
-      );
-  }
+  // initDataToServer(){
+  //     let token = this.getlogdinTokenFromLS();
+  //     this.serverservice.putDataToServer(this.Users,token).subscribe(
+  //       (Response)=>console.log(Response),
+  //       (error)=>console.log(error)
+  //     );
+  // }
 
   getDataFromServer(){
     this.serverservice.getDataFromServer().subscribe(
@@ -128,8 +126,7 @@ export class UsersService {
 
   addNewUser(user:User){
     if(user!=null){
-      this.addDataToLS(user);
-
+      this.addLogedInUserToLS(user);
     }
   }
 
@@ -143,7 +140,7 @@ export class UsersService {
   }
   finedUserByMail(mail:string){
     let user:User;
-    return user= this.Users.find((user)=>user.email===mail);
+    return user= this.Users.find((u)=>u.email===mail);
   }
 
   returnAllUsers(){
@@ -163,12 +160,32 @@ export class UsersService {
     return id;   
   }
 
-  addDataToLS(data:any){
-    localStorage.setItem('newuser', JSON.stringify(data))
+  isLogdIn(){
+    let token :String;
+    token = this.getlogdinTokenFromLS();
+    if(token.length>0){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
-  getDataFromLS() {
+
+
+  addLogedInUserToLS(data:any){
+    localStorage.setItem('logdinUser', JSON.stringify(data))
+  }
+  addlogdintokenToLS(data:any){
+    localStorage.setItem('logdintoken', JSON.stringify(data))
+  }
+
+  getlogdinTokenFromLS() {
+    return JSON.parse(localStorage.getItem('logdintoken')) || [];
+  }
+  getLogedInUserFromLS() {
     return JSON.parse(localStorage.getItem('logdinUser')) || [];
   }
+
 
 
 

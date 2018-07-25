@@ -1,16 +1,40 @@
 <div class="main-details">
-  <div class="content" > 
-    <!-- ngFor="let item of observedUser" -->
-    <h2>{{observedUser.firstName}} {{observedUser.lastName}}</h2>
-    <img src="{{observedUser.careTaker.photo}}" alt="img" class="userimg">
-    <p>{{observedUser.email}}</p>
-    <p>{{observedUser.phone}}</p>
-    <p>{{observedUser.careTaker.roll}}</p>
-    <p>{{observedUser.careTaker.about}}</p>>
+  <div class="content">
+    <div class="fullname-wraper">
+      <h1 class="fullname">{{observedUser.firstName}} {{observedUser.lastName}}</h1>
+    </div>
+    <div class="user-img">
+      <img src="{{observedUser.careTaker.photo}}" alt="img" class="img">
+    </div>
+    <div class="moredetails">
+      <ul>
+        <li>
+          <p>Email : {{observedUser.email}}</p>
+        </li>
+        <li>
+          <p>Phone : {{observedUser.phone}}</p>
+        </li>
+        <li>
+          <p>Address : {{observedUser.address}}</p>
+        </li>
+        <li>
+          <p>About : {{observedUser.careTaker.about}}</p>
+        </li>
+      </ul>
+      <!-- <div *ngIf="observedUser.careTaker.reviewes != null" class="reviews-wraper">
+        <ul class="reviews" *ngFor="let review of observedUser.careTaker.reviewes">
+          <li>
+            <p>{{review.reviewewWriter}}</p>
+            <p>{{review.reviewewMsg}}</p>
+          </li>
+        </ul>
+      </div> -->
+    </div>
   </div>
-  <div class="location">
-      <locations></locations>
+  <div class="location-wraper">
+    <div class="location">
+        <locations></locations>
+    </div>
   </div>
-  
-</div>
 
+</div>

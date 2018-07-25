@@ -9,7 +9,7 @@ import { HttpModule }   from '@angular/Http';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction'  
 import {SlideshowModule} from 'ng-simple-slideshow';
-
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -43,6 +43,7 @@ import { AuthService } from './Common/auth.service';
     CareTakerComponent,
     LocationsComponent,
     RegisterComponent,
+    
   ],
 
   imports: [

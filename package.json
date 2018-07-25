@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "agm-direction": "^0.6.0",
+    "angular-2-dropdown": "^1.0.2",
     "angular-google-maps-geocoder": "0.0.4",
     "angular-svg-icon": "^6.0.0",
     "angular2-uuid": "^1.1.1",
