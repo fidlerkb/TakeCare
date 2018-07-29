@@ -33,10 +33,6 @@ export class CareTakerComponent implements OnInit , OnDestroy {
       );
     }
 
-    test(){
-      this.observedUser.careTaker.reviewes
-    }
-
     ngOnDestroy(){
       // this.paramsSubscription.unsubscribe();
     }

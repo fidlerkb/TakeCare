@@ -1,0 +1,40 @@
+<div class="main-page">
+  <div class="user-content">
+    
+  <form (ngSubmit)="onSubmit(frm)" #frm="ngForm">
+      <div class="firstname-content">
+        <label for="FirstName" class="firstname-lable">First Name</label>
+        <input [disabled]="!editMode" type="text" id="firstname" class="firstname-input" [(ngModel)]="logedinUser.firstName" name="firstname" required #fname="ngModel">
+      </div>
+      <div class="lastname-content">
+        <label for="LastName" class="lastname-lable">Last Name</label>
+        <input [disabled]="!editMode" type="text" id="lastname" class="lastname-input" [(ngModel)]="logedinUser.lastName" name="lastname" required #lname="ngModel" >
+      </div>
+      <div class="email-content">
+        <label for="email" class="email-lable">Enail</label>
+        <input [disabled]="true" type="email" id="email" class="email-input" [(ngModel)]="logedinUser.email" name="mail" required email #email="ngModel">
+      </div>
+      <div class="password-content">
+        <label for="password" class="password-lable">Password</label>
+        <input [disabled]="true" type="password" id="password" class="password-input" [(ngModel)]="logedinUser.password" name="password" required #pass="ngModel">
+      </div>
+      <div class="phone-content">
+        <label for="phone" class="phone-lable">Phone Number</label>
+        <input [disabled]="!editMode" type="phone" id="phone" class="phone-input" [(ngModel)]="logedinUser.phone" name="phone" required  #phone="ngModel">
+      </div>
+      <div class="address-content">
+        <label for="address" class="search-lable">address</label>
+        <input [disabled]="!editMode" placeholder="search for address" id="search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl" [(ngModel)]="logedinUser.address" name="address" required >
+        <span *ngIf="!search.valid && search.touched">Required Field</span>
+        <div class="container">
+            <agm-map class="map" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+              <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="false"></agm-marker>
+            </agm-map>
+          </div>
+      </div>
+      <button [disabled]="!frm.valid || !this.validAddress" type="submit"class="submit-btn">Save</button>
+    </form>
+    <button class="editmore-btn" (click)="enableEdit()">Edit Mode</button>
+
+  </div>
+</div>

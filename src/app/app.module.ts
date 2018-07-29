@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,ElementRef } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms'; 
@@ -9,7 +9,7 @@ import { HttpModule }   from '@angular/Http';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction'  
 import {SlideshowModule} from 'ng-simple-slideshow';
-import {MatSelectModule} from '@angular/material/select';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +27,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersService } from './Common/users.service';
 import { ServerService } from './Common/server.service';
 import { AuthService } from './Common/auth.service';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 
@@ -43,6 +44,7 @@ import { AuthService } from './Common/auth.service';
     CareTakerComponent,
     LocationsComponent,
     RegisterComponent,
+    UserEditComponent,
     
   ],
 
@@ -56,6 +58,8 @@ import { AuthService } from './Common/auth.service';
     HttpModule,
     SlideshowModule,
     AgmDirectionModule,
+    ElementRef,
+    [NgbModule.forRoot()],
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB2S0sOsid__wXX9H546a3ypIDlTjflMlc',
       libraries: ["places"]

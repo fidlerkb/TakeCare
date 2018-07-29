@@ -9,6 +9,7 @@ import { LoginComponent } from '../login/login.component';
 import { CareTakerComponent } from '../care-takers/care-taker/care-taker.component';
 import { LocationsComponent } from '../care-takers/locations/locations.component';
 import { RegisterComponent } from '../register/register.component';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 
 
 const appRouts : Routes= [
@@ -19,7 +20,8 @@ const appRouts : Routes= [
   {path:'login/:id', component:LoginComponent},
   {path:'sigenup', component:SigenupComponent},
   {path:'bylocation', component:LocationsComponent},
-  {path:'register/:id', component:RegisterComponent}
+  {path:'register/:id', component:RegisterComponent},
+  {path:'useredit', component:UserEditComponent}
 ];
 
 @NgModule({

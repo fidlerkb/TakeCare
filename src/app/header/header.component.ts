@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   edituser(){
-
+    this.router.navigate(['useredit'])
   }
 
 }
